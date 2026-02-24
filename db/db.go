@@ -3,17 +3,17 @@ package db
 import (
 	"database/sql"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 var DB *sql.DB
 
 func InitDB() {
 	var err error
-	DB, err = sql.Open("sqlite3", "api.db")
+	DB, err = sql.Open("sqlite", "file:api.db?cache=shared")
 
 	if err != nil {
-		panic("Failed to connect to database.")
+		panic("Failed to connect to database: " + err.Error())
 	}
 
 	DB.SetMaxOpenConns(10)
