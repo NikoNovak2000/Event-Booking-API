@@ -1,2 +1,4 @@
 readme_example.md
 *.db
+*.env
+*.http
